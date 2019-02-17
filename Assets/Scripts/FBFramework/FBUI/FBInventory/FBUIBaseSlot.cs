@@ -27,6 +27,8 @@ namespace FelixBang
     {
         #region Fields/Properties
 
+        public static FBUIBaseSlot CurrentlyHoveringSlot { get; protected set; }
+
         private Image f_iocn;
 
         public InventoryItemModel InventoryItem
@@ -50,23 +52,35 @@ namespace FelixBang
         }
         #endregion
 
+        private void OnDisable()
+        {
+            if (CurrentlyHoveringSlot == this)
+                CurrentlyHoveringSlot = null;
+        }
+
+
+
         #region Button handler UI events
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            if (HasContained)
+            if (!HasContained)
                 return;
 
             Debug.Log("显示物品信息");
-            //FBInventoryManager.Instance.OnShowToolTips();
+            CurrentlyHoveringSlot = this;
+
+            
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            if (HasContained)
+            if (!HasContained)
                 return;
 
             Debug.Log("隐藏物品信息");
+            if (CurrentlyHoveringSlot == this)
+                CurrentlyHoveringSlot = null;
         }
 
         public virtual void OnPointerDown(PointerEventData eventData){}
@@ -98,7 +112,7 @@ namespace FelixBang
 
             InventoryItem = item;
 
-            f_iocn.sprite = InventoryItem.GetSprite();
+            f_iocn.sprite = InventoryItem.Sprite;
             f_iocn.gameObject.SetActive(true);
         }
 

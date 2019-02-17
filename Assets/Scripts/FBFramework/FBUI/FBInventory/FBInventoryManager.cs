@@ -34,8 +34,14 @@ namespace FelixBang
         private FBUIKnapsack f_knapsack;
         private FBUIVendor f_vendor;
         private FBUIChest f_chest;
+        //private FBUIInfoBox f_infoBox;
 
         
+        public Canvas InventoryCanvas
+        {
+            get { return f_canvas.GetComponent<Canvas>(); }
+        }
+
         public bool HavePickd
         {
             get { return PickedSlot.HasContained; }
@@ -204,6 +210,7 @@ namespace FelixBang
             f_knapsack = inventoryParent.GetComponentInChildren<FBUIKnapsack>();
             f_chest = inventoryParent.GetComponentInChildren<FBUIChest>();
             f_vendor = inventoryParent.GetComponentInChildren<FBUIVendor>();
+            //f_infoBox = inventoryParent.GetComponentInChildren<FBUIInfoBox>();
         }
         
         public InventoryItemModel GetInventoryItemById(int id)
@@ -305,7 +312,20 @@ namespace FelixBang
             FBDebug.Log("从背包移除");
         }
 
-
+        public void PositionRectTransformAtPosition(RectTransform rectTrans,Vector3 screenPos)
+        {
+            var canvas = f_canvas.GetComponent<Canvas>();
+            if (canvas.renderMode == RenderMode.ScreenSpaceCamera || canvas.renderMode == RenderMode.WorldSpace)
+            {
+                Vector2 pos;
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.GetComponent<RectTransform>(), screenPos, canvas.worldCamera, out pos);
+                rectTrans.position = canvas.transform.TransformPoint(pos);
+            }
+            else if (canvas.renderMode == RenderMode.ScreenSpaceOverlay)
+            {
+                rectTrans.position = screenPos;
+            }
+        }
         #endregion
     }//Class End
 }

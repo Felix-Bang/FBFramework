@@ -47,7 +47,7 @@ namespace FelixBang
         #region Interface Realization
         public void OnBeginDrag(PointerEventData eventData)
         {
-            f_dragOffset = new Vector2(f_rectTransform.anchoredPosition.x, f_rectTransform.anchoredPosition.y) - eventData.position;
+           f_dragOffset = new Vector2(f_rectTransform.anchoredPosition.x, f_rectTransform.anchoredPosition.y) - eventData.position;
 
         }
 

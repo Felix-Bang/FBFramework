@@ -15,6 +15,7 @@
 // Describe：
 // CreateTime：
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,6 +34,21 @@ namespace FelixBang
         public int BuyPrice { get; set; }
         public int SellPrice { get; set; }
         public string SpriteName { get; set; }
+
+        private Sprite f_sprite;
+        public Sprite Sprite
+        {
+            get
+            {
+                if (f_sprite == null)
+                {
+                    string path = "Sprites/Icons/" + SpriteName;
+                    f_sprite = Resources.Load<Sprite>(path);
+                }
+
+                return f_sprite;
+            }
+        }
         #endregion
 
         #region Constructor
@@ -59,13 +75,19 @@ namespace FelixBang
         #endregion
 
         #region Methods
-        public Sprite GetSprite()
+        internal LinkedList<InventoryItemInfoRowModel[]> GetInfo()
         {
-            Sprite sp;
-            string path = "Sprites/Icons/" + SpriteName;
-            sp = Resources.Load<Sprite>(path);
-            return sp;
+            var list = new LinkedList<InventoryItemInfoRowModel[]>();
+
+            list.AddLast(new InventoryItemInfoRowModel[] {
+                new InventoryItemInfoRowModel("Type",Type),
+                new InventoryItemInfoRowModel("Quality",Quality),
+                new InventoryItemInfoRowModel("Price",BuyPrice.ToString()),
+            });
+            return list;
         }
+
+        
         #endregion
     }//Class End
 }
