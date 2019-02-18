@@ -67,10 +67,9 @@ namespace FelixBang
             if (!HasContained)
                 return;
 
-            Debug.Log("显示物品信息");
-            CurrentlyHoveringSlot = this;
+            FBInventoryManager.Instance.ShowNotice("显示物品详情");
 
-            
+            CurrentlyHoveringSlot = this;
         }
 
         public void OnPointerExit(PointerEventData eventData)
@@ -78,7 +77,6 @@ namespace FelixBang
             if (!HasContained)
                 return;
 
-            Debug.Log("隐藏物品信息");
             if (CurrentlyHoveringSlot == this)
                 CurrentlyHoveringSlot = null;
         }

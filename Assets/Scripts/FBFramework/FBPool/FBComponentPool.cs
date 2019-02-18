@@ -28,10 +28,7 @@ namespace FelixBang
 
 
         public FBComponentPool(T baseObject, int startSize = 32)
-            : base(baseObject, startSize)
-        {
-
-        }
+            : base(baseObject, startSize){}
 
         public override T Instantiate()
         {
@@ -57,9 +54,7 @@ namespace FelixBang
                 }
             }
             else
-            {
                 item = InactiveObjectsPool[InactiveObjectsPool.Count - 1];
-            }
 
             Assert.IsNotNull(item, "Couldn't get poolable object from pool!");
             item.gameObject.SetActive(true);

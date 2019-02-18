@@ -39,7 +39,7 @@ namespace FelixBang
         {
             FBKnapsackSlot slot = GetSlot();
             if (slot == null)
-                FBDebug.LogWarning("没有空的位置");
+                 FBInventoryManager.Instance.ShowNotice("没有空的位置");
             else
                 slot.AddKnapsackItem(item);
         }

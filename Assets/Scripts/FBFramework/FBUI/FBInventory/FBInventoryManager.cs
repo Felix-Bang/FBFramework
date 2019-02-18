@@ -34,7 +34,7 @@ namespace FelixBang
         private FBUIKnapsack f_knapsack;
         private FBUIVendor f_vendor;
         private FBUIChest f_chest;
-        //private FBUIInfoBox f_infoBox;
+        private FBUINotice f_notice;
 
         
         public Canvas InventoryCanvas
@@ -210,7 +210,7 @@ namespace FelixBang
             f_knapsack = inventoryParent.GetComponentInChildren<FBUIKnapsack>();
             f_chest = inventoryParent.GetComponentInChildren<FBUIChest>();
             f_vendor = inventoryParent.GetComponentInChildren<FBUIVendor>();
-            //f_infoBox = inventoryParent.GetComponentInChildren<FBUIInfoBox>();
+            f_notice = inventoryParent.GetComponentInChildren<FBUINotice>();
         }
         
         public InventoryItemModel GetInventoryItemById(int id)
@@ -286,6 +286,10 @@ namespace FelixBang
             f_vendor.SwitchDisplay();
         }
 
+        public void ShowNotice(string message)
+        {
+            f_notice.AddMessage(message);
+        }
 
         //---------------- 购买/出售 -------------------
         public void Buy(InventoryItemModel item)

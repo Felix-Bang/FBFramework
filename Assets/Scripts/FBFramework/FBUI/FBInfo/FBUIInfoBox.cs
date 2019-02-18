@@ -83,6 +83,7 @@ namespace FelixBang
 		{
             if (f_isHoveringSlotWithItem)
             {
+                transform.SetAsLastSibling();
                 HandleInfoBox(FBUIBaseSlot.CurrentlyHoveringSlot);
             }
             else

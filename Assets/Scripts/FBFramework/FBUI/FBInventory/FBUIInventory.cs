@@ -61,11 +61,13 @@ namespace FelixBang
         {
             if (f_targtAlpha == 0)
             {
+                f_group.interactable = true;
                 f_group.blocksRaycasts = true;
                 f_targtAlpha = 1;
             }
             else
             {
+                f_group.interactable = false;
                 f_group.blocksRaycasts = false;
                 f_targtAlpha = 0;
             }
