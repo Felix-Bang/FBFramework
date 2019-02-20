@@ -26,7 +26,7 @@ namespace FelixBang
 	{
 
         #region Methods
-        protected override void StoreItemToSameSlot(InventoryItemModel item)
+        protected override void StoreItemToSameSlot(FBInventoryItemModel item)
         {
             FBKnapsackSlot slot = GetSlot(item);
             if (slot != null)
@@ -35,7 +35,7 @@ namespace FelixBang
                 StoreItemToEmptySlot(item);
         }
 
-        protected override void StoreItemToEmptySlot(InventoryItemModel item)
+        protected override void StoreItemToEmptySlot(FBInventoryItemModel item)
         {
             FBKnapsackSlot slot = GetSlot();
             if (slot == null)
@@ -44,7 +44,7 @@ namespace FelixBang
                 slot.AddKnapsackItem(item);
         }
 
-        private FBKnapsackSlot GetSlot(InventoryItemModel item = null)
+        private FBKnapsackSlot GetSlot(FBInventoryItemModel item = null)
         {
             foreach (FBKnapsackSlot slot in f_slot_list)
             {

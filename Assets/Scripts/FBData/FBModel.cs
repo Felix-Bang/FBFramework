@@ -1,4 +1,4 @@
-﻿// Felix-Bang：FBItemModel
+﻿// Felix-Bang：FBModel
 //　　 へ　　　　　／|
 //　　/＼7　　　 ∠＿/
 //　 /　│　　 ／　／
@@ -21,8 +21,8 @@ using UnityEngine;
 
 namespace FelixBang
 {
-	public class ItemModel
-	{
+	public class FBModel
+    {
 		
 	}//Class End
 }

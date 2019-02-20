@@ -76,7 +76,7 @@ namespace FelixBang
 
         #region Methods
         //-------------------------- Public -------------------------------
-        public void AddKnapsackItem(InventoryItemModel item, int amount = 1)
+        public void AddKnapsackItem(FBInventoryItemModel item, int amount = 1)
         {
             if (HasContained)
             {
@@ -145,7 +145,7 @@ namespace FelixBang
                         }
                         else                                                                                   //已包含物体和已捡起物体类型不同
                         {
-                            InventoryItemModel tmpItem = InventoryItem;
+                            FBInventoryItemModel tmpItem = InventoryItem;
                             int tmpCount = f_amount;
 
                             AddKnapsackItem(picked.InventoryItem, picked.Amount);

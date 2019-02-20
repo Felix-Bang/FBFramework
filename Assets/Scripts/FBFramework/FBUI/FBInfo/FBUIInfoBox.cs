@@ -61,7 +61,7 @@ namespace FelixBang
             }
         }
 
-        protected InventoryItemModel f_currentItem;
+        protected FBInventoryItemModel f_currentItem;
 
         protected FBComponentPool<FBUIInfoRow> f_row_pool;
         protected FBGameObjectPool f_category_pool;

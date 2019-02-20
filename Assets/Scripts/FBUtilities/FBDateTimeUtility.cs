@@ -69,5 +69,50 @@ namespace FelixBang
             DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
             return (int)(time - startTime).TotalSeconds;
         }
+
+        /// <summary>
+        /// 根据单位将时间转换为毫秒
+        /// </summary>
+        /// <param name="time">要转化的时间</param>
+        /// <param name="unit">要转化的时间单位</param>
+        /// <returns>毫秒</returns>
+        public static double SwitchTimeToMS(double time, FBTimeUnit unit = FBTimeUnit.Millisecond)
+        {
+            double millisecond;
+
+            switch (unit)
+            {
+                case FBTimeUnit.Millisecond:
+                    millisecond = time;
+                    break;
+                case FBTimeUnit.Second:
+                    millisecond = time * 1000;
+                    break;
+                case FBTimeUnit.Minute:
+                    millisecond = time * 1000 * 60;
+                    break;
+                case FBTimeUnit.Hour:
+                    millisecond = time * 1000 * 60 * 60;
+                    break;
+                case FBTimeUnit.Day:
+                    millisecond = time * 1000 * 60 * 60 * 24;
+                    break;
+                default:
+                    Debug.Log("Add Task unit type error...");
+                    millisecond = time;
+                    break;
+            }
+
+            return millisecond;
+        }
+    }
+
+    public enum FBTimeUnit
+    {
+        Millisecond,
+        Second,
+        Minute,
+        Hour,
+        Day
     }
 }

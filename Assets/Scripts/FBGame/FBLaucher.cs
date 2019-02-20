@@ -26,7 +26,7 @@ namespace FelixBang
 	public class FBLaucher : FBSingleton<FBLaucher>
 	{
         #region Unity回调
-        private void Awake()
+        void Awake()
         {
             
         }
@@ -47,15 +47,17 @@ namespace FelixBang
         #region 方法
         private void CreatManagers()
         {
+            FBTimerManager timerManager = FBTimerManager.Instance;
+            timerManager.transform.SetParent(transform);
+            
             FBWindowManager windowManager = FBWindowManager.Instance;
             windowManager.transform.SetParent(transform);
 
             FBInventoryManager inventoryManager = FBInventoryManager.Instance;
             inventoryManager.transform.SetParent(transform);
-
-
-
         }
+
+       
         #endregion
     }
 }

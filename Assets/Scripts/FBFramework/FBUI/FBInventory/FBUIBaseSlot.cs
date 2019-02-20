@@ -31,7 +31,7 @@ namespace FelixBang
 
         private Image f_iocn;
 
-        public InventoryItemModel InventoryItem
+        public FBInventoryItemModel InventoryItem
         {
             get; private set;
         }
@@ -103,7 +103,7 @@ namespace FelixBang
         #region Method
         //--------------------------- Public ------------------------------
 
-        public void StoreInventoryItem(InventoryItemModel item)
+        public void StoreInventoryItem(FBInventoryItemModel item)
         {
             if (f_iocn == null)
                 f_iocn = FBFindUtility.GetChildComponent<Image>(transform, "Icon");

@@ -25,8 +25,11 @@ namespace FelixBang
 {
     public abstract class FBPoolBase<T> : IEnumerable<T>
     {
+        //隐藏的Objects
         public List<T> InactiveObjectsPool { get; protected set; }
+        //激活的Objects
         public List<T> ActiveObjectsList { get; protected set; } 
+
         public Transform RootObject { get; protected set; }
         public T BaseObject { get; protected set; }
         public int StartSize { get; protected set; }

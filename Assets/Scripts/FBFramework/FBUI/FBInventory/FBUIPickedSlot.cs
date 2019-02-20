@@ -51,7 +51,7 @@ namespace FelixBang
             gameObject.SetActive(true);
         }
 
-        public void PickUp(InventoryItemModel item, int amount = 1)
+        public void PickUp(FBInventoryItemModel item, int amount = 1)
         {
             if (HasContained)
             {

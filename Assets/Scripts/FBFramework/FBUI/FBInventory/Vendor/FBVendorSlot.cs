@@ -41,7 +41,7 @@ namespace FelixBang
         }
 
         #region Methods
-        public void AddVendorItem(InventoryItemModel item)
+        public void AddVendorItem(FBInventoryItemModel item)
         {
             StoreInventoryItem(item);
             f_nameText.text = item.Name;

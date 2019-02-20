@@ -39,7 +39,7 @@ namespace FelixBang
         #endregion
 
         #region Methods
-        public void DrawRow(InventoryItemInfoRowModel row)
+        public void DrawRow(FBInfoRowModel row)
         {
             if (!f_isInit)
                 InitWidgets();

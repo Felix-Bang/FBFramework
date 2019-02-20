@@ -28,7 +28,7 @@ namespace FelixBang
 	{
 
         #region Variables/Properties/Fields
-        private List<InventoryItemModel> f_inventoryItem_list = new List<InventoryItemModel>();
+        private List<FBInventoryItemModel> f_inventoryItem_list = new List<FBInventoryItemModel>();
 
         private Transform f_canvas;
         private FBUIKnapsack f_knapsack;
@@ -62,7 +62,7 @@ namespace FelixBang
 
         private void InitWidgets()
         {
-            InventoryItemModel item0 = new InventoryItemModel
+            FBInventoryItemModel item0 = new FBInventoryItemModel
             {
                 ID = 0,
                 Name = "礼盒",
@@ -75,7 +75,7 @@ namespace FelixBang
                 SpriteName = "004 Calendar"
             };
 
-            InventoryItemModel item1 = new InventoryItemModel
+            FBInventoryItemModel item1 = new FBInventoryItemModel
             {
                 ID = 1,
                 Name = "笔记本",
@@ -88,7 +88,7 @@ namespace FelixBang
                 SpriteName = "016 Notepad"
             };
 
-            InventoryItemModel item2 = new InventoryItemModel
+            FBInventoryItemModel item2 = new FBInventoryItemModel
             {
                 ID = 2,
                 Name = "背包",
@@ -101,7 +101,7 @@ namespace FelixBang
                 SpriteName = "017 Bag"
             };
 
-            InventoryItemModel item3 = new InventoryItemModel
+            FBInventoryItemModel item3 = new FBInventoryItemModel
             {
                 ID = 3,
                 Name = "购物车",
@@ -114,7 +114,7 @@ namespace FelixBang
                 SpriteName = "154 ShoppingCart"
             };
 
-            InventoryItemModel item4 = new InventoryItemModel
+            FBInventoryItemModel item4 = new FBInventoryItemModel
             {
                 ID = 4,
                 Name = "飞机",
@@ -127,7 +127,7 @@ namespace FelixBang
                 SpriteName = "086 Airplane"
             };
 
-            InventoryItemModel item5 = new InventoryItemModel
+            FBInventoryItemModel item5 = new FBInventoryItemModel
             {
                 ID = 5,
                 Name = "耳机",
@@ -141,7 +141,7 @@ namespace FelixBang
             };
 
       
-            InventoryItemModel item6 = new InventoryItemModel
+            FBInventoryItemModel item6 = new FBInventoryItemModel
             {
                 ID = 6,
                 Name = "眼镜",
@@ -213,9 +213,9 @@ namespace FelixBang
             f_notice = inventoryParent.GetComponentInChildren<FBUINotice>();
         }
         
-        public InventoryItemModel GetInventoryItemById(int id)
+        public FBInventoryItemModel GetInventoryItemById(int id)
         {         
-            foreach (InventoryItemModel item in f_inventoryItem_list)
+            foreach (FBInventoryItemModel item in f_inventoryItem_list)
             {              
                 if (item.ID == id)
                     return item;
@@ -249,7 +249,7 @@ namespace FelixBang
            
         }
 
-        public void PickUp(InventoryItemModel item,int amount)
+        public void PickUp(FBInventoryItemModel item,int amount)
         {
             PickedSlot.PickUp(item, amount);
 
@@ -292,7 +292,7 @@ namespace FelixBang
         }
 
         //---------------- 购买/出售 -------------------
-        public void Buy(InventoryItemModel item)
+        public void Buy(FBInventoryItemModel item)
         {
             //付钱
             FBDebug.Log("付钱");

@@ -15,6 +15,7 @@
 // Describe：
 // CreateTime：2019/1/21
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,13 +25,8 @@ namespace FelixBang
 {
 	public class FBSelectWindow : FBWindow 
 	{
-		#region Delegates/Action
-		#endregion
-
-		#region Fields/Properties
-		#endregion
-
-		#region Constructor
+        #region Fields/Properties
+        private int f_taskId;
 		#endregion
 
 		#region Unity
@@ -44,23 +40,49 @@ namespace FelixBang
                 OpenWindow(FBWindowConst.F_window_inventory);
             });
 
-            RegisterButtonClickEvent("Close_Button", p =>CloseWindow(FBWindowConst.F_window_select));
+            RegisterButtonClickEvent("AddTask_Button", p => AddTask());
+            RegisterButtonClickEvent("RemoveTask_Button", p => RemoveTask(f_taskId));
+            RegisterButtonClickEvent("ReplaceTask_Button", p => ReplaceTask(f_taskId));
+
+            RegisterButtonClickEvent("Close_Button", p => CloseWindow(FBWindowConst.F_window_select));
 		}
-	
-		void Update () 
+
+        void Update () 
 		{
 			
 		}
         #endregion
 
-        #region Interface
-        #endregion
+
 
         #region Methods
         //------------------ override -----------------------
         protected override void InitWindowOnAwake()
         {
             WindowType.F_showModel = FBUIShowModel.HideOther;
+        }
+
+        private void AddTask()
+        {
+            f_taskId = FBTimerManager.Instance.AddTimeTask(() => Debug.Log("TimerTest A"), 500, 0);
+
+            //f_taskId = FBTimerManager.Instance.AddFrameTask(() => Debug.Log("FrameTest A"), 50, 0);
+        }
+
+        private void RemoveTask(int id)
+        {
+            bool isSuccess = FBTimerManager.Instance.RemoveTimeTask(id);
+            //bool isSuccess = FBTimerManager.Instance.RemoveFrameTask(id);
+            if (isSuccess)
+                FBDebug.Log("Remove Task Success!");
+        }
+
+        private void ReplaceTask(int id)
+        {
+            bool isSuccess = FBTimerManager.Instance.ReplaceTimeTask(id, () => Debug.Log("TimerReplaceTest B"), 2000, 3);
+            //bool isSuccess = FBTimerManager.Instance.ReplaceFrameTask(id, () => Debug.Log("FrameReplaceTest B"), 100, 3);
+            if (isSuccess)
+                FBDebug.Log("Replace Task Success!");
         }
 
         #endregion

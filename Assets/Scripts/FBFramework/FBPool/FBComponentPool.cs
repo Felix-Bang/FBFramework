@@ -24,15 +24,13 @@ namespace FelixBang
 {
     public class FBComponentPool<T> : FBPoolBase<T> where T : class, IFBPoolable
     {
-        private static List<IFBPoolable> _interfaceCache = new List<IFBPoolable>();
+        private static List<IFBPoolable> f_interfaceCache = new List<IFBPoolable>();
 
-
-        public FBComponentPool(T baseObject, int startSize = 32)
-            : base(baseObject, startSize){}
+        public FBComponentPool(T baseObject, int startSize = 32) : base(baseObject, startSize){}
 
         public override T Instantiate()
         {
-            var obj = UnityEngine.Object.Instantiate<GameObject>(BaseObject.gameObject);
+            var obj = UnityEngine.Object.Instantiate(BaseObject.gameObject);
 
             obj.transform.SetParent(RootObject);
             obj.gameObject.SetActive(false); // Start disabled
@@ -72,11 +70,9 @@ namespace FelixBang
             item.gameObject.transform.SetParent(RootObject);
             item.gameObject.SetActive(false); // Up for reuse
 
-            item.gameObject.GetComponents<IFBPoolable>(_interfaceCache);
-            foreach (var c in _interfaceCache)
-            {
+            item.gameObject.GetComponents<IFBPoolable>(f_interfaceCache);
+            foreach (var c in f_interfaceCache)
                 c.ResetStateForPool();
-            }
 
             InactiveObjectsPool.Add(item);
             ActiveObjectsList.Remove(item);

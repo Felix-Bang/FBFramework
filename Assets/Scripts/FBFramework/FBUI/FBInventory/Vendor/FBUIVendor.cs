@@ -48,7 +48,7 @@ namespace FelixBang
             }
         }
 
-        protected override void StoreItemToEmptySlot(InventoryItemModel item)
+        protected override void StoreItemToEmptySlot(FBInventoryItemModel item)
         {
             FBVendorSlot slot = GetSlot();
             if (slot == null)
@@ -57,7 +57,7 @@ namespace FelixBang
                 slot.AddVendorItem(item);
         }
 
-        private FBVendorSlot GetSlot(InventoryItemModel item = null)
+        private FBVendorSlot GetSlot(FBInventoryItemModel item = null)
         {
             foreach (FBVendorSlot slot in f_slot_list)
             {

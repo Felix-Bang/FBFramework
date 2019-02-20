@@ -22,8 +22,8 @@ using UnityEngine;
 
 namespace FelixBang
 {
-	public class InventoryItemModel : ItemModel 
-	{
+	public class FBInventoryItemModel : FBModel
+    {
         #region Fields/Properties
         public int ID { get; set; }
         public string Name { get; set; }
@@ -52,12 +52,12 @@ namespace FelixBang
         #endregion
 
         #region Constructor
-        public InventoryItemModel()
+        public FBInventoryItemModel()
         {
             ID = -1;
         }
 
-        public InventoryItemModel(int id, string name, InventoryItemType type, InventoryItemQuality quality, string des, int capacity, int buyPrice, int sellPrice, string sprite)
+        public FBInventoryItemModel(int id, string name, InventoryItemType type, InventoryItemQuality quality, string des, int capacity, int buyPrice, int sellPrice, string sprite)
         {
             ID = id;
             Name = name;
@@ -75,14 +75,14 @@ namespace FelixBang
         #endregion
 
         #region Methods
-        internal LinkedList<InventoryItemInfoRowModel[]> GetInfo()
+        internal LinkedList<FBInfoRowModel[]> GetInfo()
         {
-            var list = new LinkedList<InventoryItemInfoRowModel[]>();
+            var list = new LinkedList<FBInfoRowModel[]>();
 
-            list.AddLast(new InventoryItemInfoRowModel[] {
-                new InventoryItemInfoRowModel("Type",Type),
-                new InventoryItemInfoRowModel("Quality",Quality),
-                new InventoryItemInfoRowModel("Price",BuyPrice.ToString()),
+            list.AddLast(new FBInfoRowModel[] {
+                new FBInfoRowModel("Type",Type),
+                new FBInfoRowModel("Quality",Quality),
+                new FBInfoRowModel("Price",BuyPrice.ToString()),
             });
             return list;
         }

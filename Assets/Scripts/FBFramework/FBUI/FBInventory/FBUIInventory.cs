@@ -78,7 +78,7 @@ namespace FelixBang
             StoreItem(FBInventoryManager.Instance.GetInventoryItemById(id));
         }
 
-        public void StoreItem(InventoryItemModel item)
+        public void StoreItem(FBInventoryItemModel item)
         {
             if (item == null)
             {
@@ -92,10 +92,10 @@ namespace FelixBang
                 StoreItemToSameSlot(item);
         }
 
-        protected virtual void StoreItemToEmptySlot(InventoryItemModel item)
+        protected virtual void StoreItemToEmptySlot(FBInventoryItemModel item)
         {}
 
-        protected virtual void StoreItemToSameSlot(InventoryItemModel item)
+        protected virtual void StoreItemToSameSlot(FBInventoryItemModel item)
         {}
 
         protected void RegisterButtonClickEvent(string buttonName, EventListener.FBVoidDelegate handler)
