@@ -6,6 +6,15 @@
 {"Key":"LoginWindow",
 "Value":"Prefabs\\UI\\Windows\\LoginWindow"},
 
+{"Key":"StartWindow",
+"Value":"Prefabs\\UI\\Windows\\StartWindow"},
+
+{"Key":"StartOptionWindow",
+"Value":"Prefabs\\UI\\Windows\\StartOptionWindow"},
+
+{"Key":"OptionsWindow",
+"Value":"Prefabs\\UI\\Windows\\OptionsWindow"},
+
 {"Key":"SelectWindow",
 "Value":"Prefabs\\UI\\Windows\\SelectWindow"},
 

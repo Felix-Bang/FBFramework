@@ -54,6 +54,9 @@ namespace FelixBang
     public class FBWindowConst
     {
         public const string F_window_login = "LoginWindow";
+        public const string F_window_start = "StartWindow";
+        public const string F_window_startOption = "StartOptionWindow";
+        public const string F_window_options = "OptionsWindow";
         public const string F_window_select = "SelectWindow";
         public const string F_window_main = "MainWindow";
         public const string F_window_inventory = "InventoryWindow";

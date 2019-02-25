@@ -65,6 +65,7 @@ namespace FelixBang
 
         void Start()
         {
+            //Initialized();
             if (f_canvasTrans != null)
             {
                 FBMaskManager maskManager = FBMaskManager.Instance;
@@ -74,6 +75,20 @@ namespace FelixBang
         #endregion
 
         #region Method
+
+        public void Initialized()
+        {
+            InitWindowNodes();
+            InitWindowPathDate();
+
+            if (f_canvasTrans != null)
+            {
+                FBMaskManager maskManager = FBMaskManager.Instance;
+                maskManager.transform.SetParent(transform.parent);
+            }
+
+        }
+
 
         /// <summary>
         /// 显示（打开）窗口
@@ -140,8 +155,7 @@ namespace FelixBang
         /// <summary> 初始化窗口节点 </summary>
         private void InitWindowNodes()
         {
-            GameObject canvasPrefab= Resources.Load<GameObject>(FBWindowDefine.F_path_canvas);
-            GameObject canvas = GameObject.Instantiate<GameObject>(canvasPrefab);
+            FBInstantiateUtility.CreatPrefab(FBWindowDefine.F_path_canvas);
 
             f_canvasTrans = GameObject.FindGameObjectWithTag(FBWindowDefine.F_tag_canvas).transform;
             f_normalTrans = FBFindUtility.FindChildByName(f_canvasTrans, FBWindowDefine.F_node_normal).transform;
@@ -152,7 +166,7 @@ namespace FelixBang
         private void InitWindowPathDate()
         {
             IFBConfig config = new FBJsonConfigController(FBWindowDefine.F_path_windows);
-
+          
             if (config != null)
                 f_windowPaths_dic = config.ConfigFiles_Dic;
         }
@@ -167,16 +181,17 @@ namespace FelixBang
             string windowPath = string.Empty;
             GameObject windowPrefab = null;
             FBWindow baseWindow = null;
-
+          
             f_windowPaths_dic.TryGetValue(windowName, out windowPath);
+
             if (string.IsNullOrEmpty(windowPath))
             {
-                FBDebug.LogError(string.Format("The path of {0} prefab is invalid!",windowName));
+                Debug.LogError(string.Format("The path of {0} prefab is invalid!",windowName));
                 return null;
             }
-
+           
             GameObject prefab = Resources.Load<GameObject>(windowPath);
-            windowPrefab = GameObject.Instantiate<GameObject>(prefab);
+            windowPrefab = Instantiate(prefab);
 
             if (f_canvasTrans != null && windowPrefab != null)
             {
@@ -184,7 +199,7 @@ namespace FelixBang
 
                 if (baseWindow == null)
                 {
-                    FBDebug.LogError("The Component on " + windowName + " is Missing!");
+                    Debug.LogError("The Component on " + windowName + " is Missing!");
                     return null;
                 }
 
@@ -207,7 +222,7 @@ namespace FelixBang
             }
             else
             {
-                FBDebug.LogError("f_canvasTrans is not init or the windowPrefab is null");
+                Debug.LogError("f_canvasTrans is not init or the windowPrefab is null");
                 return null;
             }
         }
@@ -250,7 +265,7 @@ namespace FelixBang
                 f_currentShowWindows_stack.Push(window);
             }
             else
-                FBDebug.LogError(windowName+ " is null");
+                Debug.LogError(windowName+ " is null");
         }
 
         /// <summary>

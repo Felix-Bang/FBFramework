@@ -37,7 +37,6 @@ namespace FelixBang
             try
             {
                 TextAsset asset = Resources.Load<TextAsset>(path);
-
                 InitJson(asset.text);
             }
             catch

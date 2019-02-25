@@ -34,15 +34,43 @@ namespace FelixBang
             set { f_windowType = value; }
         }
 
+
+        [HideInInspector]
+        public string WindowName;
+
         public bool F_hideOnStart = true;
         public bool F_resetPositionOnStart = false;
+        public bool F_isSupportAnimation = false;
         
+        private Animator f_animator;
+        [SerializeField]
+        private Motion f_showMotion;
+        private int f_showMotionHash;
+        [SerializeField]
+        private Motion f_hideMotion;
+        private int f_hideMotionHash;
         #endregion
 
         #region Unity
         void Awake()
         {
             InitWindowOnAwake();
+
+            if (F_isSupportAnimation)
+            {
+                f_animator = GetComponent<Animator>();
+                if (f_animator == null)
+                    f_animator = gameObject.AddComponent<Animator>();
+            }
+
+            if (f_showMotion)
+            {
+                f_showMotionHash = Animator.StringToHash(f_showMotion.name);
+
+            }
+
+            if (f_hideMotion)
+                f_hideMotionHash = Animator.StringToHash(f_hideMotion.name);
         }
 
         /// <summary>
@@ -58,6 +86,10 @@ namespace FelixBang
         public virtual void Display()
         {
             gameObject.SetActive(true);
+
+            if (F_isSupportAnimation && f_showMotion!=null)
+                PlayMotion(f_animator, f_showMotion);
+
             if (f_windowType.F_existType == FBUIExistType.Popup)
                 FBMaskManager.Instance.FBShowMask(gameObject, f_windowType.F_lucency);
         }
@@ -65,7 +97,13 @@ namespace FelixBang
         /// <summary> 隐藏 </summary>
         public virtual void Hide()
         {
-            gameObject.SetActive(false);
+            if (F_isSupportAnimation && f_hideMotion != null)
+                PlayMotion(f_animator, f_hideMotion);
+            else
+                gameObject.SetActive(false);
+
+            OnReset();
+
             if (f_windowType.F_existType == FBUIExistType.Popup)
                 FBMaskManager.Instance.FBHideMask();
         }
@@ -74,9 +112,20 @@ namespace FelixBang
         public virtual void Redisplay()
         {
             gameObject.SetActive(true);
+            if (F_isSupportAnimation && f_showMotion != null)
+                PlayMotion(f_animator, f_showMotion);
+               
+
             if (f_windowType.F_existType == FBUIExistType.Popup)
                 FBMaskManager.Instance.FBShowMask(gameObject, f_windowType.F_lucency);
         }
+
+        public virtual void OnReset()
+        {
+
+        }
+
+      
 
         /// <summary> 冻结 </summary>
         public virtual void Freeze()
@@ -101,6 +150,12 @@ namespace FelixBang
             FBWindowManager.Instance.CloseWindow(windowName);
         }
 
+        protected void SwitchWindow(string nextWindow)
+        {
+            FBWindowManager.Instance.ShowWindow(nextWindow);
+            FBWindowManager.Instance.CloseWindow(WindowName);
+        }
+
         protected void SendMessage(string type,string messageName,object message)
         {
             FBMessageKVModel kv = new FBMessageKVModel(messageName, message);
@@ -111,6 +166,14 @@ namespace FelixBang
         {
             FBMessageCenter.RegisterMessage(type, handler);
         }
+
+        protected void PlayMotion(Animator animtor,Motion motion)
+        {
+            int hash = Animator.StringToHash(motion.name);
+            animtor.Play(hash);
+        }
+
+
 
         #endregion
     }

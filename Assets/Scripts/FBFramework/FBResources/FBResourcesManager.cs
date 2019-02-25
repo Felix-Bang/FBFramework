@@ -46,7 +46,7 @@ namespace FelixBang
 
             T TResource = Resources.Load<T>(path);
             if (TResource == null)
-                FBDebug.LogError(GetType() + "/GetInstance()/TResource 提取的资源找不到，请检查。 path=" + path);
+                Debug.LogError(GetType() + "/GetInstance()/TResource 提取的资源找不到，请检查。 path=" + path);
             else if (isCatch)
                 f_hashtable.Add(path, TResource);
 
@@ -65,7 +65,7 @@ namespace FelixBang
             GameObject goObjClone = GameObject.Instantiate<GameObject>(goObj);
 
             if (goObjClone == null)
-                FBDebug.LogError(GetType() + "/LoadAsset()/克隆资源不成功，请检查。 path=" + path);
+                Debug.LogError(GetType() + "/LoadAsset()/克隆资源不成功，请检查。 path=" + path);
             
             //goObj = null;//??????????
             return goObjClone;

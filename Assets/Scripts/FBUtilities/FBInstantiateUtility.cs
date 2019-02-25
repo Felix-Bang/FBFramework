@@ -23,6 +23,11 @@ namespace FelixBang
 {
 	public class FBInstantiateUtility : MonoBehaviour 
 	{
+
+
+
+
+
         /// <summary>
         /// 实例化预制件到场景中
         /// </summary>
@@ -70,6 +75,24 @@ namespace FelixBang
             return go;
         }
 
-       
+        public static GameObject CreatPrefab(string path)
+        {
+            GameObject prefab = Resources.Load<GameObject>(path);
+            GameObject go = Instantiate(prefab);
+
+            if (go != null)
+            {
+                Transform t = go.transform;
+                t.localPosition = Vector3.zero;
+                t.localRotation = Quaternion.identity;
+                t.localScale = Vector3.one;
+
+                go.name = prefab.name;
+            }
+
+            return go;
+        }
+
+
     }//Class End
 }

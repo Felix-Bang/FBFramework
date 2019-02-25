@@ -42,7 +42,7 @@ namespace FelixBang
             if (f_uiCamera != null)
                 f_originalDepth = f_uiCamera.depth;
             else
-                FBDebug.LogError("The uicamera is missing!");
+                Debug.LogError("The uicamera is missing!");
 
         }
         #endregion
