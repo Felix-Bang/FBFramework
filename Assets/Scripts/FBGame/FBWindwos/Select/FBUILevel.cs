@@ -15,6 +15,7 @@
 // Describe：
 // CreateTime：
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -74,8 +75,11 @@ namespace FelixBang
         {
             if (!f_isInit)
                 InitWidgets();
+
+            EventListener.Get(gameObject).OnClickDel = OnItemClick;
         }
 
+      
         public void SetLevelData(FBLevelModel level,int index)
         {
             f_ItenDataIndex = index;
@@ -96,9 +100,16 @@ namespace FelixBang
             f_isInit = true;    
         }
 
-       
-            
+        private void OnItemClick(GameObject go)
+        {
+            FBWindowManager.Instance.ShowWindow(FBWindowConst.F_window_main);
+            FBWindowManager.Instance.ShowWindow(FBWindowConst.F_window_inventory);
 
-		#endregion
-	}//Class End
+            FBWindowManager.Instance.CloseWindow(FBWindowConst.F_window_select);
+        }
+
+
+
+        #endregion
+    }//Class End
 }

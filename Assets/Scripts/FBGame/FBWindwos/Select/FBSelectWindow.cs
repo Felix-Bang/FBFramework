@@ -120,13 +120,11 @@ namespace FelixBang
         //------------------ override -----------------------
         protected override void InitWindowOnAwake()
         {
-            //WindowType.F_showModel = FBUIShowModel.HideOther;
             WindowName = FBWindowConst.F_window_select;
         }
 
         private void OnCloseBtnClick(object obj)
         {
-            //FBWindowManager.Instance.CloseWindow(FBWindowConst.F_window_select);
             SwitchWindow(FBWindowConst.F_window_start);
         }
 

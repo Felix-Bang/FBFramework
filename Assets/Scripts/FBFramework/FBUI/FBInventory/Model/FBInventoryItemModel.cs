@@ -42,7 +42,7 @@ namespace FelixBang
             {
                 if (f_sprite == null)
                 {
-                    string path = "Sprites/Icons/" + SpriteName;
+                    string path = "Weapons/" + SpriteName;
                     f_sprite = Resources.Load<Sprite>(path);
                 }
 

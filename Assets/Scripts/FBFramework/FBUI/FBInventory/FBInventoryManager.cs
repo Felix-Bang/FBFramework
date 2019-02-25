@@ -72,7 +72,7 @@ namespace FelixBang
                 Capacity = 3,
                 BuyPrice = 1500,
                 Description = "打开您将获得一件远古装备！",
-                SpriteName = "004 Calendar"
+                SpriteName = "axe_t_01"
             };
 
             FBInventoryItemModel item1 = new FBInventoryItemModel
@@ -85,7 +85,7 @@ namespace FelixBang
                 Capacity = 5,
                 BuyPrice = 300,
                 Description = "打开您将获的200经验值！",
-                SpriteName = "016 Notepad"
+                SpriteName = "b_t_01"
             };
 
             FBInventoryItemModel item2 = new FBInventoryItemModel
@@ -98,7 +98,7 @@ namespace FelixBang
                 Capacity = 5,
                 BuyPrice = 600,
                 Description = "打开您背包扩大20个位置！",
-                SpriteName = "017 Bag"
+                SpriteName = "bl_t_01"
             };
 
             FBInventoryItemModel item3 = new FBInventoryItemModel
@@ -111,7 +111,7 @@ namespace FelixBang
                 Capacity = 2,
                 BuyPrice = 800,
                 Description = "提升购买力+200！",
-                SpriteName = "154 ShoppingCart"
+                SpriteName = "f_t_01"
             };
 
             FBInventoryItemModel item4 = new FBInventoryItemModel
@@ -124,7 +124,7 @@ namespace FelixBang
                 Capacity = 1,
                 BuyPrice = 1200,
                 Description = "提升速度+200！",
-                SpriteName = "086 Airplane"
+                SpriteName = "kn_t_01"
             };
 
             FBInventoryItemModel item5 = new FBInventoryItemModel
@@ -137,7 +137,7 @@ namespace FelixBang
                 Capacity = 5,
                 BuyPrice = 200,
                 Description = "提升听力+10！",
-                SpriteName = "083 Music"
+                SpriteName = "m_t_01"
             };
 
       
@@ -151,7 +151,7 @@ namespace FelixBang
                 Capacity = 1,
                 BuyPrice = 200,
                 SellPrice = 100,
-                SpriteName = "150 Glasses",
+                SpriteName = "st_t_01",
 
                 //Strength = 200,
                 //Intellect = 100,
