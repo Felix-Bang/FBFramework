@@ -6,6 +6,7 @@ TagManager:
   tags:
   - F_Canvas
   - F_UICamera
+  - Platform
   layers:
   - Default
   - TransparentFX
@@ -42,4 +43,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3144727339
+    locked: 0
+  - name: Plat
+    uniqueID: 2678567825
+    locked: 0
+  - name: Player
+    uniqueID: 3612870001
+    locked: 0
+  - name: UI
+    uniqueID: 2852023013
     locked: 0

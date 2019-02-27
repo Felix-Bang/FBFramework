@@ -77,7 +77,7 @@ namespace FelixBang
         }
         #endregion
 
-        public void OnDestroy()
+        public virtual void OnDestroy()
         {
             f_applicationIsQuitting = true;
         }

@@ -23,11 +23,6 @@ namespace FelixBang
 {
 	public class FBInstantiateUtility : MonoBehaviour 
 	{
-
-
-
-
-
         /// <summary>
         /// 实例化预制件到场景中
         /// </summary>
@@ -91,6 +86,32 @@ namespace FelixBang
             }
 
             return go;
+        }
+
+        public static GameObject CreatPrefabInWorldSpace(GameObject prefab, Vector3 pos,Transform parent)
+        {
+            GameObject go = CreatPrefabInWorldSpace(prefab, pos);
+            go.transform.SetParent(parent);
+            return go;
+        }
+
+        public static GameObject CreatPrefabInWorldSpace(GameObject prefab, Transform parent)
+        {
+            GameObject go = CreatPrefabInWorldSpace(prefab);
+            go.transform.SetParent(parent);
+            return go;
+        }
+
+        public static GameObject CreatPrefabInWorldSpace(GameObject prefab,Vector3 pos)
+        {
+            GameObject go = CreatPrefabInWorldSpace(prefab);
+            go.transform.position = pos;
+            return go;
+        }
+
+        public static GameObject CreatPrefabInWorldSpace(GameObject prefab)
+        {
+            return Instantiate(prefab);
         }
 
 
